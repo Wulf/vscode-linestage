@@ -1,0 +1,63 @@
+{
+  "name": "linestage",
+  "displayName": "LineStage",
+  "description": "Stage and unstage selected lines or whole files with Git.",
+  "version": "0.0.1",
+  "publisher": "wulf",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wulf/vscode-linestage.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "activationEvents": [
+    "onCommand:linestage.stageLines",
+    "onCommand:linestage.unstageLines",
+    "onCommand:linestage.stageFile",
+    "onCommand:linestage.unstageFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "linestage.stageLines",
+        "title": "LineStage: Stage Lines"
+      },
+      {
+        "command": "linestage.unstageLines",
+        "title": "LineStage: Unstage Lines"
+      },
+      {
+        "command": "linestage.stageFile",
+        "title": "LineStage: Stage File"
+      },
+      {
+        "command": "linestage.unstageFile",
+        "title": "LineStage: Unstage File"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test test/*.test.js",
+    "package": "npm run compile && vsce package --no-dependencies --out linestage-${npm_package_version}.vsix && mv linestage-${npm_package_version}.vsix dist/linestage-${npm_package_version}.vsix",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.71.1",
+    "@vscode/vsce": "^3.6.0"
+  }
+}
